@@ -1,12 +1,7 @@
 package states;
 
 import display.SecuritySystemDisplay;
-import events.Zone1ReadyEvent;
-import events.Zone1UnreadyEvent;
-import events.Zone2ReadyEvent;
-import events.Zone2UnreadyEvent;
-import events.Zone3ReadyEvent;
-import events.Zone3UnreadyEvent;
+import events.ZoneUnreadyEvent;
 
 public class SecuritySystemContext {
 	private SecuritySystemDisplay display;
@@ -63,27 +58,7 @@ public class SecuritySystemContext {
 		currentState.enter();
 	}
 
-	public void handleEvent(Zone1ReadyEvent event) {
-		currentState.handleEvent(event);
-	}
-
-	public void handleEvent(Zone1UnreadyEvent event) {
-		currentState.handleEvent(event);
-	}
-
-	public void handleEvent(Zone2ReadyEvent event) {
-		currentState.handleEvent(event);
-	}
-
-	public void handleEvent(Zone2UnreadyEvent event) {
-		currentState.handleEvent(event);
-	}
-
-	public void handleEvent(Zone3ReadyEvent event) {
-		currentState.handleEvent(event);
-	}
-
-	public void handleEvent(Zone3UnreadyEvent event) {
+	public void handleEvent(ZoneUnreadyEvent event) {
 		currentState.handleEvent(event);
 	}
 

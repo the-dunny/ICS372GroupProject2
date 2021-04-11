@@ -1,17 +1,12 @@
 package states;
 
 import events.ArmingRequestEvent;
-import events.DisarmedRequestEvent;
-import events.MotionDetectorAlarmEvent;
-import events.MotionDetectorDisalarmEvent;
+import events.DisarmEvent;
+import events.MotionDetectedEvent;
+import events.StayRequestEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
-import events.Zone1ReadyEvent;
-import events.Zone1UnreadyEvent;
-import events.Zone2ReadyEvent;
-import events.Zone2UnreadyEvent;
-import events.Zone3ReadyEvent;
-import events.Zone3UnreadyEvent;
+import events.ZoneUnreadyEvent;
 
 /**
  * Super class for all states
@@ -41,11 +36,20 @@ public abstract class SecuritySystemState {
 	}
 
 	/**
+	 * Specifies action when the stay button will be pressed
+	 * 
+	 * @param event
+	 */
+	public void handleEvent(StayRequestEvent event) {
+
+	}
+
+	/**
 	 * Specifies action when the disarming button will be pressed (stay)
 	 * 
 	 * @param event
 	 */
-	public void handleEvent(DisarmedRequestEvent event) {
+	public void handleEvent(DisarmEvent event) {
 
 	}
 
@@ -54,25 +58,7 @@ public abstract class SecuritySystemState {
 	 * 
 	 * @param event
 	 */
-	public void handleEvent(MotionDetectorAlarmEvent event) {
-
-	}
-
-	/**
-	 * Specifies action when the motion detector button will be pressed (not alarm)
-	 * 
-	 * @param event
-	 */
-	public void handleEvent(MotionDetectorDisalarmEvent event) {
-
-	}
-
-	/**
-	 * Specifies action when zone 1 buttons are clear (ready)
-	 * 
-	 * @param event
-	 */
-	public void handleEvent(Zone1ReadyEvent event) {
+	public void handleEvent(MotionDetectedEvent event) {
 
 	}
 
@@ -81,43 +67,7 @@ public abstract class SecuritySystemState {
 	 * 
 	 * @param event
 	 */
-	public void handleEvent(Zone1UnreadyEvent event) {
-
-	}
-
-	/**
-	 * Specifies action when zone 2 buttons are clear (ready)
-	 * 
-	 * @param event
-	 */
-	public void handleEvent(Zone2ReadyEvent event) {
-
-	}
-
-	/**
-	 * Specifies action when zone 2 buttons are unclear (unready)
-	 * 
-	 * @param event
-	 */
-	public void handleEvent(Zone2UnreadyEvent event) {
-
-	}
-
-	/**
-	 * Specifies action when zone 3 buttons are clear (ready)
-	 * 
-	 * @param event
-	 */
-	public void handleEvent(Zone3ReadyEvent event) {
-
-	}
-
-	/**
-	 * Specifies action when zone 3 buttons are unclear (unready)
-	 * 
-	 * @param event
-	 */
-	public void handleEvent(Zone3UnreadyEvent event) {
+	public void handleEvent(ZoneUnreadyEvent event) {
 
 	}
 
