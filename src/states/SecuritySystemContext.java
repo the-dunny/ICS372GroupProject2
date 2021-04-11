@@ -12,7 +12,7 @@ public class SecuritySystemContext {
 	private SecuritySystemDisplay display;
 	private SecuritySystemState currentState;
 	private static SecuritySystemContext instance;
-
+	private boolean zoneOneReady, zoneTwoReady, zoneThreeReady;
 	/**
 	 * Make a singleton
 	 */
@@ -47,6 +47,9 @@ public class SecuritySystemContext {
 	 */
 	public void initialize() {
 		instance.changeState(DisarmedState.instance());
+		zoneOneReady = false;
+		zoneTwoReady = false;
+		zoneThreeReady = false;
 	}
 
 	/**
