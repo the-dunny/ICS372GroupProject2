@@ -6,14 +6,14 @@ package events;
  * @author Luan Nguyen
  *
  */
-public class PasswordEnteredEvent extends SecuritySystemEvent {
-	private static PasswordEnteredEvent instance;
+public class DisarmEvent extends SecuritySystemEvent {
+	private static DisarmEvent instance;
 
 	/**
 	 * private for singleton
 	 */
 
-	private PasswordEnteredEvent() {
+	private DisarmEvent() {
 
 	}
 
@@ -23,9 +23,9 @@ public class PasswordEnteredEvent extends SecuritySystemEvent {
 	 * @Return the only instance
 	 */
 
-	public static PasswordEnteredEvent intance() {
+	public static DisarmEvent intance() {
 		if (instance == null) {
-			instance = new PasswordEnteredEvent();
+			instance = new DisarmEvent();
 		}
 		return instance;
 	}

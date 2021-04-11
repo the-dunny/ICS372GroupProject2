@@ -1,7 +1,7 @@
 package states;
 
-import events.DisarmedRequestEvent;
-import events.Zone1ReadyEvent;
+import events.ArmingRequestEvent;
+import events.StayRequestEvent;
 
 /**
  * Represent the system is disarmed
@@ -24,8 +24,13 @@ public class DisarmedState extends SecuritySystemState {
 	}
 
 	@Override
-	public void handleEvent(DisarmedRequestEvent event) {
-		SecuritySystemContext.instance().changeState(ArmedState.instance());
+	public void handleEvent(ArmingRequestEvent event) {
+		SecuritySystemContext.instance().changeState(ArmingState.instance());
+	}
+
+	@Override
+	public void handleEvent(StayRequestEvent event) {
+		SecuritySystemContext.instance().changeState(StayState.instance());
 	}
 
 	@Override

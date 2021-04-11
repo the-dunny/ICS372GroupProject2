@@ -1,7 +1,6 @@
 package states;
 
-import events.DisarmedRequestEvent;
-import events.Zone1ReadyEvent;
+import events.TimerRanOutEvent;
 
 /**
  * Represent the system is disarmed
@@ -9,23 +8,23 @@ import events.Zone1ReadyEvent;
  * @author Luan Nguyen
  *
  */
-public class DisarmedState extends SecuritySystemState {
-	private static DisarmedState instance;
+public class ArmingState extends SecuritySystemState {
+	private static ArmingState instance;
 
-	private DisarmedState() {
+	private ArmingState() {
 
 	}
 
-	public static DisarmedState instance() {
+	public static ArmingState instance() {
 		if (instance == null) {
-			instance = new DisarmedState();
+			instance = new ArmingState();
 		}
 		return instance;
 	}
 
 	@Override
-	public void handleEvent(DisarmedRequestEvent event) {
-		SecuritySystemContext.instance().changeState(ArmedState.instance());
+	public void handleEvent(TimerRanOutEvent event) {
+		SecuritySystemContext.instance().changeState(AwayState.instance());
 	}
 
 	@Override

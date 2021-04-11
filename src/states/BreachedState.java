@@ -1,10 +1,9 @@
 package states;
 
-import events.DisarmedRequestEvent;
-import events.Zone1ReadyEvent;
+import events.DisarmEvent;
 
 public class BreachedState extends SecuritySystemState {
-	private static ArmedState instance;
+	private static BreachedState instance;
 
 	/**
 	 * Private constructor for the singleton pattern
@@ -26,8 +25,8 @@ public class BreachedState extends SecuritySystemState {
 	}
 
 	@Override
-	public void handleEvent( event) {
-		SecuritySystemContext.instance().changeState(TriggeredState.instance());
+	public void handleEvent(DisarmEvent event) {
+		SecuritySystemContext.instance().changeState(DisarmedState.instance());
 	}
 
 	@Override

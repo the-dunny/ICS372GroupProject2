@@ -1,15 +1,15 @@
 package states;
 
-import events.DisarmedRequestEvent;
-import events.Zone1ReadyEvent;
+import events.MotionDetectedEvent;
+import events.ZoneUnreadyEvent;
 
-public class ArmedState extends SecuritySystemState {
-	private static ArmedState instance;
+public class AwayState extends SecuritySystemState {
+	private static AwayState instance;
 
 	/**
 	 * Private constructor for the singleton pattern
 	 */
-	private ArmedState() {
+	private AwayState() {
 		instance = this;
 	}
 
@@ -18,19 +18,19 @@ public class ArmedState extends SecuritySystemState {
 	 * 
 	 * @return the object
 	 */
-	public static ArmedState instance() {
+	public static AwayState instance() {
 		if (instance == null) {
-			instance = new ArmedState();
+			instance = new AwayState();
 		}
 		return instance;
 	}
 
 	@Override
-	public void handleEvent(MotionDetectirAlarmEvent event) {
+	public void handleEvent(MotionDetectedEvent event) {
 		SecuritySystemContext.instance().changeState(TriggeredState.instance());
 	}
 	@Override
-	public void handleEvent(UnreadyEvent event) {
+	public void handleEvent(ZoneUnreadyEvent event) {
 		SecuritySystemContext.instance().changeState(TriggeredState.instance());
 	}
 	@Override
