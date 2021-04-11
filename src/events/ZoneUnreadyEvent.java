@@ -6,14 +6,14 @@ package events;
  * @author Luan Nguyen
  *
  */
-public class Zone1UnreadyEvent extends SecuritySystemEvent {
-	private static Zone1UnreadyEvent instance;
+public class ZoneUnreadyEvent extends SecuritySystemEvent {
+	private static ZoneUnreadyEvent instance;
 
 	/**
 	 * Private for singleton
 	 * 
 	 */
-	private Zone1UnreadyEvent() {
+	private ZoneUnreadyEvent() {
 
 	}
 
@@ -22,9 +22,9 @@ public class Zone1UnreadyEvent extends SecuritySystemEvent {
 	 * 
 	 * @return the only instance
 	 */
-	public static Zone1UnreadyEvent instance() {
+	public static ZoneUnreadyEvent instance() {
 		if (instance == null) {
-			instance = new Zone1UnreadyEvent();
+			instance = new ZoneUnreadyEvent();
 		}
 		return instance;
 	}
