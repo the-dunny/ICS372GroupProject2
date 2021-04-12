@@ -1,11 +1,15 @@
 package display.controller;
 
+import events.ArmingRequestEvent;
+import events.MotionDetectedEvent;
+import events.StayRequestEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import states.SecuritySystemContext;
 
 public class DisplayController {
     @FXML
@@ -49,7 +53,7 @@ public class DisplayController {
 
     @FXML
     void handleAwayButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(ArmingRequestEvent.instance());
     }
 
     @FXML
@@ -74,7 +78,7 @@ public class DisplayController {
 
     @FXML
     void handleMotionDetectorButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(MotionDetectedEvent.instance());
     }
 
     @FXML
@@ -99,7 +103,7 @@ public class DisplayController {
 
     @FXML
     void handleStayButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(StayRequestEvent.instance());
     }
 
     @FXML

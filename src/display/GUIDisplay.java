@@ -29,6 +29,12 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	}
 
 	@Override
+	public void showAway() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
 	public void showReady() {
 		// TODO Auto-generated method stub
 
@@ -41,12 +47,6 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	}
 
 	@Override
-	public void showArmed() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void showDisarmed() {
 		// TODO Auto-generated method stub
 
@@ -54,6 +54,18 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showBreach() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void showStay() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void showArming() {
 		// TODO Auto-generated method stub
 
 	}

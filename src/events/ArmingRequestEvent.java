@@ -17,7 +17,7 @@ public class ArmingRequestEvent extends SecuritySystemEvent {
 	 * @Return the only instance
 	 */
 
-	public static ArmingRequestEvent intance() {
+	public static ArmingRequestEvent instance() {
 		if (instance == null) {
 			instance = new ArmingRequestEvent();
 		}

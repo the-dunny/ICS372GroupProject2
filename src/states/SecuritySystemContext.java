@@ -1,6 +1,10 @@
 package states;
 
 import display.SecuritySystemDisplay;
+import events.ArmingRequestEvent;
+import events.DisarmEvent;
+import events.MotionDetectedEvent;
+import events.StayRequestEvent;
 import events.ZoneUnreadyEvent;
 
 public class SecuritySystemContext {
@@ -62,6 +66,22 @@ public class SecuritySystemContext {
 		currentState.handleEvent(event);
 	}
 
+	public void handleEvent(DisarmEvent event) {
+		currentState.handleEvent(event);
+	}
+
+	public void handleEvent(MotionDetectedEvent event) {
+		currentState.handleEvent(event);
+	}
+
+	public void handleEvent(ArmingRequestEvent event) {
+		currentState.handleEvent(event);
+	}
+
+	public void handleEvent(StayRequestEvent event) {
+		currentState.handleEvent(event);
+	}
+
 	public void showTimeLeft(int time) {
 		display.showTimeLeft(time);
 	}
@@ -74,12 +94,24 @@ public class SecuritySystemContext {
 		display.showReady();
 	}
 
-	public void showArmed() {
-		display.showArmed();
+	public void showAway() {
+		display.showAway();
+	}
+
+	public void showStay() {
+		display.showStay();
+	}
+
+	public void showArming() {
+		display.showArming();
 	}
 
 	public void showDisarmed() {
 		display.showDisarmed();
+	}
+
+	public void showBreach() {
+		display.showBreach();
 	}
 
 }

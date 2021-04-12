@@ -17,7 +17,7 @@ public class StayRequestEvent extends SecuritySystemEvent {
 	 * @Return the only instance
 	 */
 
-	public static StayRequestEvent intance() {
+	public static StayRequestEvent instance() {
 		if (instance == null) {
 			instance = new StayRequestEvent();
 		}

@@ -37,7 +37,7 @@ public class StayState extends SecuritySystemState {
 
 	@Override
 	public void enter() {
-		// TODO Auto-generated method stub
+		SecuritySystemContext.instance().showStay();
 
 	}
 
