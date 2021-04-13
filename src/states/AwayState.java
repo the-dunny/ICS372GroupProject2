@@ -35,8 +35,7 @@ public class AwayState extends SecuritySystemState {
 	}
 	@Override
 	public void enter() {
-		// TODO Auto-generated method stub
-
+		SecuritySystemContext.instance().showAway();
 	}
 
 	@Override

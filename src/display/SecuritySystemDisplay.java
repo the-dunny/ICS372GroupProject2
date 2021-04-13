@@ -10,6 +10,16 @@ public interface SecuritySystemDisplay {
 	public void showTimeLeft(int time);
 
 	/**
+	 * Indicates that the system is in Away State
+	 */
+	public void showAway();
+
+	/**
+	 * Indicates that the system is in Stay State
+	 */
+	public void showStay();
+
+	/**
 	 * Indicate that the system is ready to arm
 	 */
 	public void showReady();
@@ -20,9 +30,9 @@ public interface SecuritySystemDisplay {
 	public void showUnready();
 
 	/**
-	 * Indicate that the system is armed
+	 * Indicate that the system is arming
 	 */
-	public void showArmed();
+	public void showArming();
 
 	/**
 	 * Indicate that the system is disarmed

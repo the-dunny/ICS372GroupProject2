@@ -1,6 +1,8 @@
 package states;
 
 import events.TimerRanOutEvent;
+import events.TimerTickedEvent;
+import timer.Timer;
 
 /**
  * Represent the system is disarmed
@@ -10,6 +12,7 @@ import events.TimerRanOutEvent;
  */
 public class ArmingState extends SecuritySystemState {
 	private static ArmingState instance;
+	private Timer timer;
 
 	private ArmingState() {
 
@@ -23,13 +26,18 @@ public class ArmingState extends SecuritySystemState {
 	}
 
 	@Override
+	public void handleEvent(TimerTickedEvent event) {
+		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
+	}
+
+	@Override
 	public void handleEvent(TimerRanOutEvent event) {
 		SecuritySystemContext.instance().changeState(AwayState.instance());
 	}
 
 	@Override
 	public void enter() {
-		// TODO Auto-generated method stub
+		SecuritySystemContext.instance().showArming();
 
 	}
 
