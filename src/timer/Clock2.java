@@ -1,0 +1,77 @@
+package timer;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
+public class Clock2 implements Runnable{
+	private static Clock2 clock;
+	private final PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+	private Thread thread;
+	
+	
+	/**
+	 * Method to remove a listener from the clock
+	 * @param listener- the listener that we don't need
+	 */
+	public void removePropertyChangeListener(PropertyChangeListener targetListener) {
+		changeSupport.removePropertyChangeListener(targetListener);
+	}
+	
+	/**
+	 * Method to add a listener to the clock
+	 * @param new Listener that will be added to Clock
+	 */
+	public void addPropertyChangeListener(PropertyChangeListener newListener) {
+		changeSupport.addPropertyChangeListener(newListener);
+	}
+	
+	private Clock2() {
+		thread = new Thread(() -> run());
+		thread.start();
+	}
+	
+	/**
+	 * public method to create an instance of the clock.
+	 * This method will call the clock constructor which starts the
+	 * thread.
+	 * @return
+	 */
+	public static Clock2 instance() {
+		if(clock == null) {
+			return clock = new Clock2();
+		}
+		else {
+			return clock;
+		}
+	}
+	
+	/**
+	 * Override the run method.  Thread thread will fire a change every
+	 * second.  It will adjust for time spend 
+	 */
+	@Override
+	public void run() {
+		boolean keepGoing = true;
+		long oneSecondAdjusted = 1_000L;
+		try {
+			while(keepGoing) {
+				long timeBeforeSleep = System.currentTimeMillis();
+				Thread.sleep(oneSecondAdjusted);
+				changeSupport.firePropertyChange(null, null, null);
+				long timeAfterSleep = System.currentTimeMillis();
+				long actualElapsedTime = timeAfterSleep - timeBeforeSleep;
+				if(actualElapsedTime > 1_000L) {
+					oneSecondAdjusted = 1_000L - (actualElapsedTime - 1_000L);
+				}else {
+					oneSecondAdjusted = 1_000L;
+				}
+			}
+		} catch (Exception e) {
+			thread.interrupt();
+			System.err.println("Error type: " + e.getClass() +'\n' +
+					"Error message: " + e.getMessage());
+		}
+		
+	}
+
+}
