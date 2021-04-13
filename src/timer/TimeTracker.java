@@ -5,7 +5,7 @@ import java.beans.PropertyChangeListener;
 
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
-public class Timer2 implements PropertyChangeListener {
+public class TimeTracker implements PropertyChangeListener {
 	//instance variables are: an amount of time and a client
 	int timeRemaining;
 	Notifiable client;
@@ -17,10 +17,10 @@ public class Timer2 implements PropertyChangeListener {
 	 * @param initialTime
 	 * @param newClient
 	 */
-	public Timer2(int initialTime, Notifiable newClient) {
+	public TimeTracker(int initialTime, Notifiable newClient) {
 		this.timeRemaining = initialTime;
 		this.client = newClient;
-		Clock2.instance().addPropertyChangeListener(this);
+		Timekeeper.instance().addPropertyChangeListener(this);
 	}
 	
 	/**

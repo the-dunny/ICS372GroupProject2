@@ -3,8 +3,8 @@ package timer;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class Clock2 implements Runnable{
-	private static Clock2 clock;
+public class Timekeeper implements Runnable{
+	private static Timekeeper timekeeper;
 	private final PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 	private Thread thread;
 	
@@ -25,7 +25,7 @@ public class Clock2 implements Runnable{
 		changeSupport.addPropertyChangeListener(newListener);
 	}
 	
-	private Clock2() {
+	private Timekeeper() {
 		thread = new Thread(() -> run());
 		thread.start();
 	}
@@ -36,12 +36,12 @@ public class Clock2 implements Runnable{
 	 * thread.
 	 * @return
 	 */
-	public static Clock2 instance() {
-		if(clock == null) {
-			return clock = new Clock2();
+	public static Timekeeper instance() {
+		if(timekeeper == null) {
+			return timekeeper = new Timekeeper();
 		}
 		else {
-			return clock;
+			return timekeeper;
 		}
 	}
 	
@@ -54,22 +54,26 @@ public class Clock2 implements Runnable{
 		boolean keepGoing = true;
 		long oneSecondAdjusted = 1_000L;
 		try {
+			
 			while(keepGoing) {
 				long timeBeforeSleep = System.currentTimeMillis();
 				Thread.sleep(oneSecondAdjusted);
 				changeSupport.firePropertyChange(null, null, null);
 				long timeAfterSleep = System.currentTimeMillis();
 				long actualElapsedTime = timeAfterSleep - timeBeforeSleep;
+				
+				//check to see if we drifted and adjust the 1 second timer
 				if(actualElapsedTime > 1_000L) {
 					oneSecondAdjusted = 1_000L - (actualElapsedTime - 1_000L);
 				}else {
 					oneSecondAdjusted = 1_000L;
 				}
 			}
+			
 		} catch (Exception e) {
-			thread.interrupt();
 			System.err.println("Error type: " + e.getClass() +'\n' +
 					"Error message: " + e.getMessage());
+			thread.interrupt();
 		}
 		
 	}
