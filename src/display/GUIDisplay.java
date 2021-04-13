@@ -26,6 +26,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	@Override
 	public void showTimeLeft(int time) {
 		// TODO Auto-generated method stub
+		display.showTimeLeft(time);
 	}
 
 	@Override

@@ -50,7 +50,7 @@ public class TimeTracker implements PropertyChangeListener {
 		// if the timeRemaining less 1 leaves timer less than 0 - handle a TimeRanOutEvent
 		if((timeRemaining - 1) <= 0) {
 			client.handleEvent(TimerRanOutEvent.instance());
-			Clock.instance().removePropertyChangeListener(this);
+			Timekeeper.instance().removePropertyChangeListener(this);
 		}else {
 			//else update the timer
 			client.handleEvent(new TimerTickedEvent(timeRemaining));
