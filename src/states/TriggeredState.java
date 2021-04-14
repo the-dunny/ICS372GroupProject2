@@ -3,7 +3,7 @@ package states;
 import events.DisarmEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
-import timer.Timer;
+import timer.TimeTracker;
 
 /**
  * Represent the system is disarmed
@@ -13,7 +13,7 @@ import timer.Timer;
  */
 public class TriggeredState extends SecuritySystemState {
 	private static TriggeredState instance;
-	private Timer timer;
+	private TimeTracker timer;
 
 	private TriggeredState() {
 
@@ -33,7 +33,7 @@ public class TriggeredState extends SecuritySystemState {
 
 	@Override
 	public void handleEvent(TimerTickedEvent event) {
-		SecuritySystemContext.instance().showTimeLeft(timer.getTimeValue());
+		SecuritySystemContext.instance().showTimeLeft(timer.getRemainingTime());
 	}
 
 	@Override

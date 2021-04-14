@@ -4,11 +4,11 @@ import display.GUIDisplay;
 import display.SecuritySystemDisplay;
 import javafx.application.Application;
 import states.SecuritySystemContext;
-import timer.Clock;
+import timer.Timekeeper;
 
 public class Main {
     public static void main(String[] args) {
-        Clock.instance();
+        Timekeeper.instance();
         new Thread() {
             @Override
             public void run() {
