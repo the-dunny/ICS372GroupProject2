@@ -1,8 +1,9 @@
 package states;
 
 import events.ArmingRequestEvent;
-import events.DisarmEvent;
+import events.CancelEvent;
 import events.MotionDetectedEvent;
+import events.NumericEnteredEvent;
 import events.StayRequestEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
@@ -49,7 +50,7 @@ public abstract class SecuritySystemState {
 	 * 
 	 * @param event
 	 */
-	public void handleEvent(DisarmEvent event) {
+	public void handleEvent(CancelEvent event) {
 
 	}
 
@@ -59,6 +60,15 @@ public abstract class SecuritySystemState {
 	 * @param event
 	 */
 	public void handleEvent(MotionDetectedEvent event) {
+
+	}
+
+	/**
+	 * Specifies action when a number is pressed
+	 * 
+	 * @param event
+	 */
+	public void handleEvent(NumericEnteredEvent event) {
 
 	}
 

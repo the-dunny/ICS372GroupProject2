@@ -1,5 +1,6 @@
 package states;
 
+import events.CancelEvent;
 import events.MotionDetectedEvent;
 import events.ZoneUnreadyEvent;
 
@@ -33,6 +34,12 @@ public class AwayState extends SecuritySystemState {
 	public void handleEvent(ZoneUnreadyEvent event) {
 		SecuritySystemContext.instance().changeState(TriggeredState.instance());
 	}
+
+	@Override
+	public void handleEvent(CancelEvent event) {
+		SecuritySystemContext.instance().changeState(DisarmedState.instance());
+	}
+
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showAway();

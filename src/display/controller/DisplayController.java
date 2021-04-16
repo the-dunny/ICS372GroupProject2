@@ -1,7 +1,9 @@
 package display.controller;
 
 import events.ArmingRequestEvent;
+import events.CancelEvent;
 import events.MotionDetectedEvent;
+import events.NumericEnteredEvent;
 import events.StayRequestEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,22 +60,22 @@ public class DisplayController {
 
     @FXML
     void handleCancelButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(CancelEvent.instance());
     }
 
     @FXML
     void handleEightButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML
     void handleFiveButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML
     void handleFourButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML
@@ -83,22 +85,22 @@ public class DisplayController {
 
     @FXML
     void handleNineButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML
     void handleOneButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML
     void handleSevenButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML
     void handleSixButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML
@@ -108,17 +110,17 @@ public class DisplayController {
 
     @FXML
     void handleThreeButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML
     void handleTwoButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML
     void handleZeroButton(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
     }
 
     @FXML

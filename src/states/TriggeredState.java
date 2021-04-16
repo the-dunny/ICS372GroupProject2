@@ -1,6 +1,6 @@
 package states;
 
-import events.DisarmEvent;
+import events.CancelEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
 import timer.TimeTracker;
@@ -27,7 +27,7 @@ public class TriggeredState extends SecuritySystemState {
 	}
 
 	@Override
-	public void handleEvent(DisarmEvent event) {
+	public void handleEvent(CancelEvent event) {
 		SecuritySystemContext.instance().changeState(DisarmedState.instance());
 	}
 

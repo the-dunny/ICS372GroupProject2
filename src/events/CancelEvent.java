@@ -6,14 +6,14 @@ package events;
  * @author Luan Nguyen
  *
  */
-public class DisarmEvent extends SecuritySystemEvent {
-	private static DisarmEvent instance;
+public class CancelEvent extends SecuritySystemEvent {
+	private static CancelEvent instance;
 
 	/**
 	 * private for singleton
 	 */
 
-	private DisarmEvent() {
+	private CancelEvent() {
 
 	}
 
@@ -23,9 +23,9 @@ public class DisarmEvent extends SecuritySystemEvent {
 	 * @Return the only instance
 	 */
 
-	public static DisarmEvent intance() {
+	public static CancelEvent instance() {
 		if (instance == null) {
-			instance = new DisarmEvent();
+			instance = new CancelEvent();
 		}
 		return instance;
 	}
