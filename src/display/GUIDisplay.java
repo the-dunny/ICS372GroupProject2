@@ -29,6 +29,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		stage.setScene(new Scene(loader.load()));
 
 		controller = loader.getController();
+		showUnready();
 		stage.show();
 	}
 
@@ -52,7 +53,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showUnready() {
-		controller.statusDisplayChange("NotReady");
+		controller.statusDisplayChange("Not Ready");
 
 	}
 

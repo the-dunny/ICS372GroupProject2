@@ -7,6 +7,7 @@ import events.NumericEnteredEvent;
 import events.StayRequestEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
+import events.ZoneChangeEvent;
 import events.ZoneUnreadyEvent;
 
 /**
@@ -92,6 +93,13 @@ public abstract class SecuritySystemState {
 	 * Process clock ticks Generates the timer runs out event
 	 */
 	public void handleEvent(TimerRanOutEvent event) {
+
+	}
+
+	/**
+	 * Specifies what happens when a zone changes
+	 */
+	public void handleEvent(ZoneChangeEvent event) {
 
 	}
 

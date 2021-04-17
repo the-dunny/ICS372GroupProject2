@@ -28,12 +28,12 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 
 	@Override
 	public void handleEvent(TimerTickedEvent event) {
-		SecuritySystemContext.instance().showTimeLeft(timer.getRemainingTime(), "Arm");
+		SecuritySystemContext.instance().showTimeLeft(timer.getRemainingTime(), "Away");
 	}
 
 	@Override
 	public void handleEvent(TimerRanOutEvent event) {
-		SecuritySystemContext.instance().showTimeLeft(0, "Arm");
+		SecuritySystemContext.instance().showTimeLeft(0, "Away");
 		SecuritySystemContext.instance().changeState(AwayState.instance());
 	}
 
@@ -41,14 +41,14 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 	public void enter() {
 		timer = new TimeTracker(10, this);
 		SecuritySystemContext.instance().showArming();
-		SecuritySystemContext.instance().showTimeLeft(timer.getRemainingTime(), "Arm");
+		SecuritySystemContext.instance().showTimeLeft(timer.getRemainingTime(), "Away");
 
 	}
 
 	@Override
 	public void leave() {
 		timer = null;
-		SecuritySystemContext.instance().showTimeLeft(0, "Arm");
+		SecuritySystemContext.instance().showTimeLeft(0, "Away");
 
 	}
 

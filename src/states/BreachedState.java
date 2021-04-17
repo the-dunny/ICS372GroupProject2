@@ -38,7 +38,6 @@ public class BreachedState extends SecuritySystemState {
 	@Override
 	public void leave() {
 		SecuritySystemContext.instance().showDisarmed();
-
 	}
 
 }

@@ -5,6 +5,7 @@ import events.CancelEvent;
 import events.MotionDetectedEvent;
 import events.NumericEnteredEvent;
 import events.StayRequestEvent;
+import events.ZoneChangeEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -125,17 +126,17 @@ public class DisplayController {
 
     @FXML
     void handleZoneOneRadio(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(new ZoneChangeEvent(1));
     }
 
     @FXML
     void handleZoneThreeRadio(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(new ZoneChangeEvent(3));
     }
 
     @FXML
     void handleZoneTwoRadio(ActionEvent event) {
-
+		SecuritySystemContext.instance().handleEvent(new ZoneChangeEvent(2));
     }
 
 	@FXML
