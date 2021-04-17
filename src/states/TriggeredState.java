@@ -1,6 +1,6 @@
 package states;
 
-import events.CancelEvent;
+import events.NumericEnteredEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
 import timer.Notifiable;
@@ -28,7 +28,7 @@ public class TriggeredState extends SecuritySystemState implements Notifiable {
 	}
 
 	@Override
-	public void handleEvent(CancelEvent event) {
+	public void handleEvent(NumericEnteredEvent event) {
 		SecuritySystemContext.instance().changeState(DisarmedState.instance());
 	}
 
