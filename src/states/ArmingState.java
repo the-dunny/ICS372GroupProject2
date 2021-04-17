@@ -49,7 +49,7 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 	public void leave() {
 		timer = null;
 		SecuritySystemContext.instance().showTimeLeft(0, "Away");
-
+		SecuritySystemContext.instance().showAway();
 	}
 
 }
