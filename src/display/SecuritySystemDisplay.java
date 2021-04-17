@@ -5,9 +5,9 @@ public interface SecuritySystemDisplay {
 	/**
 	 * Displays the time remaining to go out of the house
 	 * 
-	 * @param time remaining time
+	 * @param time remaining time, state state it is going into after time runs out
 	 */
-	public void showTimeLeft(int time);
+	public void showTimeLeft(int time, String state);
 
 	/**
 	 * Indicates that the system is in Away State
@@ -43,5 +43,10 @@ public interface SecuritySystemDisplay {
 	 * Indicate that the system is breach
 	 */
 	public void showBreach();
+
+	/**
+	 * Indicate that the system is triggered
+	 */
+	public void showTriggered();
 
 }

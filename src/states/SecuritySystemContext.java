@@ -87,8 +87,8 @@ public class SecuritySystemContext {
 		currentState.handleEvent(event);
 	}
 
-	public void showTimeLeft(int time) {
-		display.showTimeLeft(time);
+	public void showTimeLeft(int time, String state) {
+		display.showTimeLeft(time, state);
 	}
 
 	public void showUnready() {
@@ -117,6 +117,11 @@ public class SecuritySystemContext {
 
 	public void showBreach() {
 		display.showBreach();
+	}
+
+	public void showTriggered() {
+		display.showTriggered();
+
 	}
 
 }

@@ -31,7 +31,7 @@ public class DisplayController {
     @FXML
     private Button motionDetectorButton;
     @FXML
-    private TextArea statusDisplay;
+	private TextArea statusDisplay;
     @FXML
     private Button oneButton;
     @FXML
@@ -137,5 +137,10 @@ public class DisplayController {
     void handleZoneTwoRadio(ActionEvent event) {
 
     }
+
+	@FXML
+	public void statusDisplayChange(String string) {
+		statusDisplay.setText(string);
+	}
 
 }

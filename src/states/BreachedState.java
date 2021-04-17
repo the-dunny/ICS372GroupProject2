@@ -37,7 +37,7 @@ public class BreachedState extends SecuritySystemState {
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
+		SecuritySystemContext.instance().showDisarmed();
 
 	}
 

@@ -22,7 +22,7 @@ public class TimeTracker implements PropertyChangeListener {
 		this.client = newClient;
 		Timekeeper.instance().addPropertyChangeListener(this);
 	}
-	
+
 	/**
 	 * Method to top off timer TODO don't know if we will need this??
 	 * @param additionalTime
@@ -48,12 +48,13 @@ public class TimeTracker implements PropertyChangeListener {
 	@Override
 	public void propertyChange(PropertyChangeEvent arg0) {
 		// if the timeRemaining less 1 leaves timer less than 0 - handle a TimeRanOutEvent
-		if((timeRemaining - 1) <= 0) {
+		if (--timeRemaining <= 0) {
 			client.handleEvent(TimerRanOutEvent.instance());
 			Timekeeper.instance().removePropertyChangeListener(this);
 		}else {
 			//else update the timer
 			client.handleEvent(new TimerTickedEvent(timeRemaining));
+
 		}
 	}
 	
