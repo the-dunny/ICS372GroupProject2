@@ -1,6 +1,7 @@
 package states;
 
 import events.ArmingRequestEvent;
+import events.CancelEvent;
 import events.ZoneUnreadyEvent;
 
 public class StayState extends SecuritySystemState {
@@ -33,6 +34,11 @@ public class StayState extends SecuritySystemState {
 	@Override
 	public void handleEvent(ZoneUnreadyEvent event) {
 		SecuritySystemContext.instance().changeState(TriggeredState.instance());
+	}
+
+	@Override
+	public void handleEvent(CancelEvent event) {
+		SecuritySystemContext.instance().changeState(DisarmedState.instance());
 	}
 
 	@Override

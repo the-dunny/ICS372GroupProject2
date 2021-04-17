@@ -1,6 +1,6 @@
 package states;
 
-import events.DisarmEvent;
+import events.CancelEvent;
 
 public class BreachedState extends SecuritySystemState {
 	private static BreachedState instance;
@@ -25,7 +25,7 @@ public class BreachedState extends SecuritySystemState {
 	}
 
 	@Override
-	public void handleEvent(DisarmEvent event) {
+	public void handleEvent(CancelEvent event) {
 		SecuritySystemContext.instance().changeState(DisarmedState.instance());
 	}
 

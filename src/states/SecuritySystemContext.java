@@ -2,8 +2,9 @@ package states;
 
 import display.SecuritySystemDisplay;
 import events.ArmingRequestEvent;
-import events.DisarmEvent;
+import events.CancelEvent;
 import events.MotionDetectedEvent;
+import events.NumericEnteredEvent;
 import events.StayRequestEvent;
 import events.ZoneUnreadyEvent;
 
@@ -66,11 +67,15 @@ public class SecuritySystemContext {
 		currentState.handleEvent(event);
 	}
 
-	public void handleEvent(DisarmEvent event) {
+	public void handleEvent(CancelEvent event) {
 		currentState.handleEvent(event);
 	}
 
 	public void handleEvent(MotionDetectedEvent event) {
+		currentState.handleEvent(event);
+	}
+
+	public void handleEvent(NumericEnteredEvent event) {
 		currentState.handleEvent(event);
 	}
 
