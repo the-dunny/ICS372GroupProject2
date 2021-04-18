@@ -6,6 +6,7 @@ import events.CancelEvent;
 import events.MotionDetectedEvent;
 import events.NumericEnteredEvent;
 import events.StayRequestEvent;
+import events.ZoneChangeEvent;
 import events.ZoneUnreadyEvent;
 
 public class SecuritySystemContext {
@@ -87,16 +88,48 @@ public class SecuritySystemContext {
 		currentState.handleEvent(event);
 	}
 
-	public void showTimeLeft(int time) {
-		display.showTimeLeft(time);
+	public void handleEvent(ZoneChangeEvent event) {
+		if (event.getZoneNumber() == 1) {
+			zoneOneReady = changeBoolean(zoneOneReady);
+		} else if (event.getZoneNumber() == 2) {
+			zoneTwoReady = changeBoolean(zoneTwoReady);
+		} else if (event.getZoneNumber() == 3) {
+			zoneThreeReady = changeBoolean(zoneThreeReady);
+		}
+		if (!readyCheck()) {
+			handleEvent(ZoneUnreadyEvent.instance());
+		}
+		currentState.handleEvent(event);
 	}
 
+	private boolean changeBoolean(Boolean valueToChange) {
+		if (valueToChange) {
+			return false;
+		}
+		return true;
+	}
+
+	public boolean readyCheck() {
+		return zoneOneReady && zoneTwoReady && zoneThreeReady;
+	}
+
+	public void showZoneStatus() {
+		if (!readyCheck()) {
+			showUnready();
+		} else {
+			showReady();
+		}
+	}
 	public void showUnready() {
 		display.showUnready();
 	}
 
 	public void showReady() {
 		display.showReady();
+	}
+
+	public void showTimeLeft(int time, String state) {
+		display.showTimeLeft(time, state);
 	}
 
 	public void showAway() {
@@ -118,5 +151,11 @@ public class SecuritySystemContext {
 	public void showBreach() {
 		display.showBreach();
 	}
+
+	public void showTriggered() {
+		display.showTriggered();
+
+	}
+
 
 }

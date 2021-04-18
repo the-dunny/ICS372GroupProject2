@@ -1,14 +1,16 @@
 package display;
 
+import display.controller.DisplayController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import states.SecuritySystemContext;
 
 public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	public static SecuritySystemDisplay display;
+	DisplayController controller;
 
 	public static SecuritySystemDisplay getInstance() {
 		return display;
@@ -16,57 +18,71 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent fxmlRoot = FXMLLoader
-				.load(getClass().getResource("../display/fxml/security_system_display.fxml"));
-		stage.setTitle("Security System");
-		stage.setScene(new Scene(fxmlRoot));
+//		Parent fxmlRoot = FXMLLoader
+//				.load(getClass().getResource("../display/fxml/security_system_display.fxml"));
+//		stage.setTitle("Security System");
+//		stage.setScene(new Scene(fxmlRoot));
+//		stage.show();
+		SecuritySystemContext.instance().setDisplay(this);
+		display = this;
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../display/fxml/security_system_display.fxml"));
+		stage.setScene(new Scene(loader.load()));
+
+		controller = loader.getController();
+		showUnready();
 		stage.show();
 	}
 
 	@Override
-	public void showTimeLeft(int time) {
-		// TODO Auto-generated method stub
+	public void showTimeLeft(int time, String state) {
+		String stringTime = String.valueOf(time) + " seconds to " + state;
+		controller.statusDisplayChange(stringTime);
 	}
 
 	@Override
 	public void showAway() {
-		// TODO Auto-generated method stub
+		controller.statusDisplayChange("Away");
 
 	}
 
 	@Override
 	public void showReady() {
-		// TODO Auto-generated method stub
+		controller.statusDisplayChange("Ready");
 
 	}
 
 	@Override
 	public void showUnready() {
-		// TODO Auto-generated method stub
+		controller.statusDisplayChange("Not Ready");
 
 	}
 
 	@Override
 	public void showDisarmed() {
-		// TODO Auto-generated method stub
+		controller.statusDisplayChange("Disarmed");
 
 	}
 
 	@Override
 	public void showBreach() {
-		// TODO Auto-generated method stub
+		controller.statusDisplayChange("Breached");
 
 	}
 
 	@Override
 	public void showStay() {
-		// TODO Auto-generated method stub
-
+		controller.statusDisplayChange("Stay");
 	}
 
 	@Override
 	public void showArming() {
-		// TODO Auto-generated method stub
+		controller.statusDisplayChange("Arming");
+
+	}
+
+	@Override
+	public void showTriggered() {
+		controller.statusDisplayChange("Triggered");
 
 	}
 
