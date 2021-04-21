@@ -1,26 +1,15 @@
 package events;
 
 public class NumericEnteredEvent {
-	private static NumericEnteredEvent instance;
 
-	/**
-	 * private for singleton
-	 */
+	private int numeric;
 
-	private NumericEnteredEvent() {
-
+	public NumericEnteredEvent(int numeric) {
+		this.numeric = numeric;
 	}
 
-	/**
-	 * For the singleton pattern
-	 * 
-	 * @Return the only instance
-	 */
-
-	public static NumericEnteredEvent instance() {
-		if (instance == null) {
-			instance = new NumericEnteredEvent();
-		}
-		return instance;
+	public int getNumeric() {
+		return numeric;
 	}
+
 }

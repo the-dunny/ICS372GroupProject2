@@ -4,7 +4,6 @@ import events.ArmingRequestEvent;
 import events.CancelEvent;
 import events.MotionDetectedEvent;
 import events.NumericEnteredEvent;
-import events.StayRequestEvent;
 import events.ZoneChangeEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,7 +55,7 @@ public class DisplayController {
 
     @FXML
     void handleAwayButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(ArmingRequestEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new ArmingRequestEvent(1));
     }
 
     @FXML
@@ -66,17 +65,17 @@ public class DisplayController {
 
     @FXML
     void handleEightButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(8));
     }
 
     @FXML
     void handleFiveButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(5));
     }
 
     @FXML
     void handleFourButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(4));
     }
 
     @FXML
@@ -86,42 +85,42 @@ public class DisplayController {
 
     @FXML
     void handleNineButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(9));
     }
 
     @FXML
     void handleOneButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(1));
     }
 
     @FXML
     void handleSevenButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(7));
     }
 
     @FXML
     void handleSixButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(6));
     }
 
     @FXML
     void handleStayButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(StayRequestEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new ArmingRequestEvent(0));
     }
 
     @FXML
     void handleThreeButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(3));
     }
 
     @FXML
     void handleTwoButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(2));
     }
 
     @FXML
     void handleZeroButton(ActionEvent event) {
-		SecuritySystemContext.instance().handleEvent(NumericEnteredEvent.instance());
+		SecuritySystemContext.instance().handleEvent(new NumericEnteredEvent(0));
     }
 
     @FXML

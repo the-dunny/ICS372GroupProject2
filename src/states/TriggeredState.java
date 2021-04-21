@@ -1,6 +1,6 @@
 package states;
 
-import events.NumericEnteredEvent;
+import events.PasswordEnteredEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
 import timer.Notifiable;
@@ -28,7 +28,8 @@ public class TriggeredState extends SecuritySystemState implements Notifiable {
 	}
 
 	@Override
-	public void handleEvent(NumericEnteredEvent event) {
+	public void handleEvent(PasswordEnteredEvent event) {
+		timer.stop();
 		SecuritySystemContext.instance().changeState(DisarmedState.instance());
 	}
 
@@ -44,7 +45,7 @@ public class TriggeredState extends SecuritySystemState implements Notifiable {
 
 	@Override
 	public void enter() {
-		timer = new TimeTracker(10, this);
+		timer = new TimeTracker(15, this);
 		SecuritySystemContext.instance().showTriggered();
 		SecuritySystemContext.instance().showTimeLeft(timer.getRemainingTime(), "Breach");
 

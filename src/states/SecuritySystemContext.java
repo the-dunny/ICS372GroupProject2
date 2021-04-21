@@ -1,10 +1,14 @@
 package states;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import display.SecuritySystemDisplay;
 import events.ArmingRequestEvent;
 import events.CancelEvent;
 import events.MotionDetectedEvent;
 import events.NumericEnteredEvent;
+import events.PasswordEnteredEvent;
 import events.StayRequestEvent;
 import events.ZoneChangeEvent;
 import events.ZoneUnreadyEvent;
@@ -14,6 +18,9 @@ public class SecuritySystemContext {
 	private SecuritySystemState currentState;
 	private static SecuritySystemContext instance;
 	private boolean zoneOneReady, zoneTwoReady, zoneThreeReady;
+	private int armingFrom;
+	private int[] password = new int[] { 1, 2, 3, 4 };
+	private List<Integer> passwordEntered = new ArrayList<Integer>();
 	/**
 	 * Make a singleton
 	 */
@@ -76,11 +83,23 @@ public class SecuritySystemContext {
 		currentState.handleEvent(event);
 	}
 
-	public void handleEvent(NumericEnteredEvent event) {
+	public void handleEvent(PasswordEnteredEvent event) {
 		currentState.handleEvent(event);
 	}
 
+	public void handleEvent(NumericEnteredEvent event) {
+		passwordEntered.add(event.getNumeric());
+		if (passwordEntered.size() == 4) {
+			if (passwordCheck()) {
+				handleEvent(PasswordEnteredEvent.instance());
+			}
+			passwordEntered.clear();
+		}
+
+	}
+
 	public void handleEvent(ArmingRequestEvent event) {
+		armingFrom = event.getArmingFrom();
 		currentState.handleEvent(event);
 	}
 
@@ -120,6 +139,20 @@ public class SecuritySystemContext {
 			showReady();
 		}
 	}
+
+	public int getArmingFrom() {
+		return armingFrom;
+	}
+
+	public boolean passwordCheck() {
+		for (int index = 0; index < 4; index++) {
+			if (password[index] != passwordEntered.get(index)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public void showUnready() {
 		display.showUnready();
 	}
@@ -157,5 +190,9 @@ public class SecuritySystemContext {
 
 	}
 
+	public void showPasswordPrompt() {
+		display.showPasswordPrompt();
+
+	}
 
 }
