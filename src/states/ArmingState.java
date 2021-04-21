@@ -6,19 +6,26 @@ import timer.Notifiable;
 import timer.TimeTracker;
 
 /**
- * Represent the system is disarmed
+ * Represents the arming state
  * 
- * @author Luan Nguyen
  *
  */
 public class ArmingState extends SecuritySystemState implements Notifiable {
 	private static ArmingState instance;
 	private TimeTracker timer;
 
+	/**
+	 * Private for the singleton pattern
+	 */
 	private ArmingState() {
 
 	}
 
+	/**
+	 * For singleton
+	 * 
+	 * @return the object
+	 */
 	public static ArmingState instance() {
 		if (instance == null) {
 			instance = new ArmingState();
@@ -26,11 +33,17 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 		return instance;
 	}
 
+	/**
+	 * Process the timer ticked event
+	 */
 	@Override
 	public void handleEvent(TimerTickedEvent event) {
 		SecuritySystemContext.instance().showTimeLeft(timer.getRemainingTime(), "Armed");
 	}
 
+	/**
+	 * Process the timer ran out event
+	 */
 	@Override
 	public void handleEvent(TimerRanOutEvent event) {
 		SecuritySystemContext.instance().showTimeLeft(0, "Armed");
@@ -45,6 +58,10 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 		}
 	}
 
+	/**
+	 * Initializes the state
+	 * 
+	 */
 	@Override
 	public void enter() {
 		timer = new TimeTracker(10, this);

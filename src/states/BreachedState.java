@@ -2,6 +2,10 @@ package states;
 
 import events.PasswordEnteredEvent;
 
+/**
+ * Represents the breached state
+ *
+ */
 public class BreachedState extends SecuritySystemState {
 	private static BreachedState instance;
 
@@ -24,11 +28,17 @@ public class BreachedState extends SecuritySystemState {
 		return instance;
 	}
 
+	/**
+	 * Handle passward enter event
+	 */
 	@Override
 	public void handleEvent(PasswordEnteredEvent event) {
 		SecuritySystemContext.instance().changeState(DisarmedState.instance());
 	}
 
+	/**
+	 * Initializes state
+	 */
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showBreach();

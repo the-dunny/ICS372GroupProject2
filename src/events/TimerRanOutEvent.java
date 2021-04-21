@@ -3,7 +3,6 @@ package events;
 /**
  * Represent the time ran out event
  * 
- * @author Luan Nguyen
  *
  */
 public class TimerRanOutEvent extends SecuritySystemEvent {

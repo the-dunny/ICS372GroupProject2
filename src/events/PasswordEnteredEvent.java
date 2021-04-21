@@ -1,5 +1,9 @@
 package events;
 
+/**
+ * Represents the password input
+ *
+ */
 public class PasswordEnteredEvent {
 	private static PasswordEnteredEvent instance;
 

@@ -3,6 +3,10 @@ package states;
 import events.MotionDetectedEvent;
 import events.ZoneUnreadyEvent;
 
+/**
+ * Represents the away state
+ *
+ */
 public class AwayState extends SecuritySystemState {
 	private static AwayState instance;
 
@@ -25,15 +29,25 @@ public class AwayState extends SecuritySystemState {
 		return instance;
 	}
 
+	/**
+	 * Process the motion detect event
+	 */
 	@Override
 	public void handleEvent(MotionDetectedEvent event) {
 		SecuritySystemContext.instance().changeState(TriggeredState.instance());
 	}
+
+	/**
+	 * Handle the zone unready event
+	 */
 	@Override
 	public void handleEvent(ZoneUnreadyEvent event) {
 		SecuritySystemContext.instance().changeState(TriggeredState.instance());
 	}
 
+	/**
+	 * Initializes state
+	 */
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showAway();
@@ -41,7 +55,7 @@ public class AwayState extends SecuritySystemState {
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
+		// do nothing
 
 	}
 

@@ -5,6 +5,10 @@ import events.NumericEnteredEvent;
 import events.PasswordEnteredEvent;
 import events.ZoneUnreadyEvent;
 
+/**
+ * Represents the stay state
+ *
+ */
 public class StayState extends SecuritySystemState {
 	private static StayState instance;
 	private boolean cancelPressed;
@@ -29,11 +33,17 @@ public class StayState extends SecuritySystemState {
 		return instance;
 	}
 
+	/**
+	 * Handle the zone unready event
+	 */
 	@Override
 	public void handleEvent(ZoneUnreadyEvent event) {
 		SecuritySystemContext.instance().changeState(BreachedState.instance());
 	}
 
+	/**
+	 * Handle cancel event
+	 */
 	@Override
 	public void handleEvent(CancelEvent event) {
 		SecuritySystemContext.instance().showPasswordPrompt();
@@ -41,11 +51,17 @@ public class StayState extends SecuritySystemState {
 		SecuritySystemContext.instance().clearPasswordEntered();
 	}
 
+	/**
+	 * Handle numeric entered event
+	 */
 	@Override
 	public void handleEvent(NumericEnteredEvent event) {
 		SecuritySystemContext.instance().showNumeric(SecuritySystemContext.instance().getPasswordEntered());
 	}
 
+	/**
+	 * Handle password entered event
+	 */
 	@Override
 	public void handleEvent(PasswordEnteredEvent event) {
 		if (cancelPressed == true) {
@@ -53,6 +69,9 @@ public class StayState extends SecuritySystemState {
 		}
 	}
 
+	/**
+	 * Initializes state
+	 */
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showStay();
@@ -62,7 +81,7 @@ public class StayState extends SecuritySystemState {
 
 	@Override
 	public void leave() {
-		// TODO Auto-generated method stub
+		// Do nothing
 
 	}
 
