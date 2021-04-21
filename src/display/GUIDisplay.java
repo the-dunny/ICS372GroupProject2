@@ -41,7 +41,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showAway() {
-		controller.statusDisplayChange("Away");
+		controller.statusDisplayChange("Armed Away");
 
 	}
 
@@ -71,7 +71,7 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	@Override
 	public void showStay() {
-		controller.statusDisplayChange("Stay");
+		controller.statusDisplayChange("Armed Stay");
 	}
 
 	@Override
@@ -83,6 +83,17 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 	@Override
 	public void showTriggered() {
 		controller.statusDisplayChange("Triggered");
+
+	}
+
+	@Override
+	public void showPasswordPrompt() {
+		controller.statusDisplayChange("Enter password to cancel");
+	}
+
+	@Override
+	public void showNumeric(String stringPassword) {
+		controller.statusDisplayChange(stringPassword);
 
 	}
 

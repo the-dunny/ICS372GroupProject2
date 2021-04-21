@@ -49,4 +49,14 @@ public interface SecuritySystemDisplay {
 	 */
 	public void showTriggered();
 
+	/**
+	 * prompts user for password when cancel pressed
+	 */
+	public void showPasswordPrompt();
+
+	/**
+	 * shows number pressed
+	 */
+	public void showNumeric(String stringPassword);
+
 }

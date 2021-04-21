@@ -4,6 +4,7 @@ import events.ArmingRequestEvent;
 import events.CancelEvent;
 import events.MotionDetectedEvent;
 import events.NumericEnteredEvent;
+import events.PasswordEnteredEvent;
 import events.StayRequestEvent;
 import events.TimerRanOutEvent;
 import events.TimerTickedEvent;
@@ -100,6 +101,13 @@ public abstract class SecuritySystemState {
 	 * Specifies what happens when a zone changes
 	 */
 	public void handleEvent(ZoneChangeEvent event) {
+
+	}
+
+	/**
+	 * Specifies what happens whent the password is entered
+	 */
+	public void handleEvent(PasswordEnteredEvent event) {
 
 	}
 

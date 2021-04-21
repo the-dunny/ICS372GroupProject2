@@ -57,6 +57,11 @@ public class TimeTracker implements PropertyChangeListener {
 
 		}
 	}
+
+	public void stop() {
+		Timekeeper.instance().removePropertyChangeListener(this);
+
+	}
 	
 
 }

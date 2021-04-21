@@ -1,6 +1,6 @@
 package states;
 
-import events.NumericEnteredEvent;
+import events.PasswordEnteredEvent;
 
 public class BreachedState extends SecuritySystemState {
 	private static BreachedState instance;
@@ -25,7 +25,7 @@ public class BreachedState extends SecuritySystemState {
 	}
 
 	@Override
-	public void handleEvent(NumericEnteredEvent event) {
+	public void handleEvent(PasswordEnteredEvent event) {
 		SecuritySystemContext.instance().changeState(DisarmedState.instance());
 	}
 

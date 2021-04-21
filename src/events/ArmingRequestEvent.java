@@ -1,27 +1,15 @@
 package events;
 
 public class ArmingRequestEvent extends SecuritySystemEvent {
-	private static ArmingRequestEvent instance;
+	private int armingFrom;
 
-	/**
-	 * private for singleton
-	 */
-
-	private ArmingRequestEvent() {
-
+	public ArmingRequestEvent(int armingFrom) {
+		this.armingFrom = armingFrom;
 	}
 
-	/**
-	 * For the singleton pattern
-	 * 
-	 * @Return the only instance
-	 */
-
-	public static ArmingRequestEvent instance() {
-		if (instance == null) {
-			instance = new ArmingRequestEvent();
-		}
-		return instance;
+	public int getArmingFrom() {
+		return armingFrom;
 	}
+
 
 }
