@@ -54,4 +54,9 @@ public interface SecuritySystemDisplay {
 	 */
 	public void showPasswordPrompt();
 
+	/**
+	 * shows number pressed
+	 */
+	public void showNumeric(String stringPassword);
+
 }

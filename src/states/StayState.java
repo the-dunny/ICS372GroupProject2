@@ -1,7 +1,7 @@
 package states;
 
-import events.ArmingRequestEvent;
 import events.CancelEvent;
+import events.NumericEnteredEvent;
 import events.PasswordEnteredEvent;
 import events.ZoneUnreadyEvent;
 
@@ -30,11 +30,6 @@ public class StayState extends SecuritySystemState {
 	}
 
 	@Override
-	public void handleEvent(ArmingRequestEvent event) {
-		SecuritySystemContext.instance().changeState(ArmingState.instance());
-	}
-
-	@Override
 	public void handleEvent(ZoneUnreadyEvent event) {
 		SecuritySystemContext.instance().changeState(BreachedState.instance());
 	}
@@ -43,6 +38,12 @@ public class StayState extends SecuritySystemState {
 	public void handleEvent(CancelEvent event) {
 		SecuritySystemContext.instance().showPasswordPrompt();
 		cancelPressed = true;
+		SecuritySystemContext.instance().clearPasswordEntered();
+	}
+
+	@Override
+	public void handleEvent(NumericEnteredEvent event) {
+		SecuritySystemContext.instance().showNumeric(SecuritySystemContext.instance().getPasswordEntered());
 	}
 
 	@Override

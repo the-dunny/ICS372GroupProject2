@@ -21,6 +21,7 @@ public class SecuritySystemContext {
 	private int armingFrom;
 	private int[] password = new int[] { 1, 2, 3, 4 };
 	private List<Integer> passwordEntered = new ArrayList<Integer>();
+	private String stringPassword = "";
 	/**
 	 * Make a singleton
 	 */
@@ -89,11 +90,13 @@ public class SecuritySystemContext {
 
 	public void handleEvent(NumericEnteredEvent event) {
 		passwordEntered.add(event.getNumeric());
+		stringPassword += event.getNumeric();
+		currentState.handleEvent(event);
 		if (passwordEntered.size() == 4) {
 			if (passwordCheck()) {
 				handleEvent(PasswordEnteredEvent.instance());
 			}
-			passwordEntered.clear();
+			clearPasswordEntered();
 		}
 
 	}
@@ -144,6 +147,11 @@ public class SecuritySystemContext {
 		return armingFrom;
 	}
 
+	public void clearPasswordEntered() {
+		passwordEntered.clear();
+		stringPassword = "";
+	}
+
 	public boolean passwordCheck() {
 		for (int index = 0; index < 4; index++) {
 			if (password[index] != passwordEntered.get(index)) {
@@ -151,6 +159,10 @@ public class SecuritySystemContext {
 			}
 		}
 		return true;
+	}
+
+	public String getPasswordEntered() {
+		return stringPassword;
 	}
 
 	public void showUnready() {
@@ -193,6 +205,10 @@ public class SecuritySystemContext {
 	public void showPasswordPrompt() {
 		display.showPasswordPrompt();
 
+	}
+
+	public void showNumeric(String stringPassword) {
+		display.showNumeric(stringPassword);
 	}
 
 }

@@ -91,4 +91,10 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 		controller.statusDisplayChange("Enter password to cancel");
 	}
 
+	@Override
+	public void showNumeric(String stringPassword) {
+		controller.statusDisplayChange(stringPassword);
+
+	}
+
 }
