@@ -1,5 +1,9 @@
 package events;
 
+/**
+ * Represents the stay request
+ *
+ */
 public class StayRequestEvent extends SecuritySystemEvent {
 	private static StayRequestEvent instance;
 

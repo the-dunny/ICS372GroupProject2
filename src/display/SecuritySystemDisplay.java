@@ -1,6 +1,10 @@
 package display;
 
-// TODO - Check to see all methods are appropriate or not?
+/**
+ * Specifies what the display system should do. Note that the implementation has
+ * a lot of freedom to choose its display.
+ * 
+ */
 public interface SecuritySystemDisplay {
 	/**
 	 * Displays the time remaining to go out of the house
@@ -55,7 +59,7 @@ public interface SecuritySystemDisplay {
 	public void showPasswordPrompt();
 
 	/**
-	 * shows number pressed
+	 * shows numbers pressed
 	 */
 	public void showNumeric(String stringPassword);
 

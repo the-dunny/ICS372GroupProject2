@@ -1,9 +1,8 @@
 package events;
 
 /**
- * Represents all zones are unready to arm
+ * Represents zone is not ready to arm
  * 
- * @author Luan Nguyen
  *
  */
 public class ZoneUnreadyEvent extends SecuritySystemEvent {

@@ -87,7 +87,7 @@ public abstract class SecuritySystemState {
 	 * Process clock tick Generates the timer runs out event
 	 */
 	public void handleEvent(TimerTickedEvent event) {
-		
+
 	}
 
 	/**

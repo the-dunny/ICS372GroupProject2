@@ -1,9 +1,8 @@
 package events;
 
 /**
- * Represents the disarmed request, where the password is entered and then cancel is pressed
+ * Represents the disarmed request
  * 
- * @author Luan Nguyen
  *
  */
 public class CancelEvent extends SecuritySystemEvent {

@@ -3,7 +3,6 @@ package events;
 /**
  * Represent the motion detector alarm when it detect the motion.
  * 
- * @author Luan Nguyen
  *
  */
 public class MotionDetectedEvent {
