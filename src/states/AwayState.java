@@ -53,9 +53,12 @@ public class AwayState extends SecuritySystemState {
 		SecuritySystemContext.instance().showAway();
 	}
 
+	/**
+	 * When leaving it shows the zone status
+	 */
 	@Override
 	public void leave() {
-		// do nothing
+		SecuritySystemContext.instance().showZoneStatus();
 
 	}
 

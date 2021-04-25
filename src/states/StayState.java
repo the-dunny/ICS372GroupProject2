@@ -85,9 +85,12 @@ public class StayState extends SecuritySystemState {
 
 	}
 
+	/**
+	 * When leaving it shows the zone status
+	 */
 	@Override
 	public void leave() {
-		// Do nothing
+		SecuritySystemContext.instance().showZoneStatus();
 
 	}
 

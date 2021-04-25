@@ -29,7 +29,7 @@ public class BreachedState extends SecuritySystemState {
 	}
 
 	/**
-	 * Handle passward enter event
+	 * Handle password enter event
 	 */
 	@Override
 	public void handleEvent(PasswordEnteredEvent event) {
@@ -37,12 +37,12 @@ public class BreachedState extends SecuritySystemState {
 	}
 
 	/**
-	 * Initializes state
+	 * Initializes state. Clears the password entered.
 	 */
 	@Override
 	public void enter() {
 		SecuritySystemContext.instance().showBreach();
-
+		SecuritySystemContext.instance().clearPasswordEntered();
 	}
 
 	@Override
