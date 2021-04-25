@@ -53,7 +53,8 @@ public class Timekeeper implements Runnable {
 
 	/**
 	 * Override the run method. Thread thread will fire a change every second. It
-	 * will adjust for time spend
+	 * will adjust for time spent in calculation to ensure that the amount of time request
+	 * is how long it will wait.
 	 */
 	@Override
 	public void run() {

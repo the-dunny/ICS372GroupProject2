@@ -17,7 +17,8 @@ public class ArmingRequestEvent extends SecuritySystemEvent {
 	}
 
 	/**
-	 * Getter method
+	 * Getter method that will return the integer value for 
+	 * arming from.
 	 * 
 	 * @return armingFrom
 	 */

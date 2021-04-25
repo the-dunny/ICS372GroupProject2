@@ -5,6 +5,12 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
+/**
+ * Main class shows extends Application of FX, sets title to Security System,
+ * and the size of the scene, then shows the window
+ * 
+ * @author jordan
+ */
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {

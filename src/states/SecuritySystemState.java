@@ -20,7 +20,7 @@ import events.ZoneUnreadyEvent;
 public abstract class SecuritySystemState {
 
 	/**
-	 * Initializes the state
+	 * Initializes the state, called when a new state is just first being called
 	 */
 	public abstract void enter();
 
@@ -32,7 +32,7 @@ public abstract class SecuritySystemState {
 	/**
 	 * Specifies action when the arming button will be pressed (away)
 	 * 
-	 * @param event
+	 * @param event - an ArmingRequestEvent
 	 */
 	public void handleEvent(ArmingRequestEvent event) {
 
@@ -41,7 +41,7 @@ public abstract class SecuritySystemState {
 	/**
 	 * Specifies action when the stay button will be pressed
 	 * 
-	 * @param event
+	 * @param event - a StayRequestEvent
 	 */
 	public void handleEvent(StayRequestEvent event) {
 
@@ -50,7 +50,7 @@ public abstract class SecuritySystemState {
 	/**
 	 * Specifies action when the disarming button will be pressed (stay)
 	 * 
-	 * @param event
+	 * @param event - Cancel Event
 	 */
 	public void handleEvent(CancelEvent event) {
 
@@ -59,7 +59,7 @@ public abstract class SecuritySystemState {
 	/**
 	 * Specifies action when the motion detector button will be pressed (alarm)
 	 * 
-	 * @param event
+	 * @param event - MotionDetectedEvent
 	 */
 	public void handleEvent(MotionDetectedEvent event) {
 
@@ -68,7 +68,7 @@ public abstract class SecuritySystemState {
 	/**
 	 * Specifies action when a number is pressed
 	 * 
-	 * @param event
+	 * @param event - a NumericEnteredEvent
 	 */
 	public void handleEvent(NumericEnteredEvent event) {
 
@@ -77,21 +77,22 @@ public abstract class SecuritySystemState {
 	/**
 	 * Specifies action when zone 1 buttons are unclear (unready)
 	 * 
-	 * @param event
+	 * @param event - ZoneUnreadyEvent
 	 */
 	public void handleEvent(ZoneUnreadyEvent event) {
 
 	}
 
 	/**
-	 * Process clock tick Generates the timer runs out event
+	 * Process clock tick Generates the timer runs out event, will caused
+	 * when the TimeTracker fires a property change event
 	 */
 	public void handleEvent(TimerTickedEvent event) {
 
 	}
 
 	/**
-	 * Process clock ticks Generates the timer runs out event
+	 * handles the event when the timer reaches 0
 	 */
 	public void handleEvent(TimerRanOutEvent event) {
 
@@ -105,7 +106,8 @@ public abstract class SecuritySystemState {
 	}
 
 	/**
-	 * Specifies what happens whent the password is entered
+	 * Specifies what happens when the password is entered only can be called
+	 * if the password is entered correctly
 	 */
 	public void handleEvent(PasswordEnteredEvent event) {
 

@@ -8,7 +8,8 @@ public class ZoneChangeEvent extends SecuritySystemEvent {
 	private int zoneNumber;
 
 	/**
-	 * Constructor
+	 * Constructor, this will create a instance of ZoneChangeEvent
+	 * and store the zone number in the zoneNumber field
 	 * 
 	 * @param zoneNumber
 	 */
@@ -17,7 +18,8 @@ public class ZoneChangeEvent extends SecuritySystemEvent {
 	}
 
 	/**
-	 * Getter method
+	 * Getter method, will get the value of the zone stored in zoneNumber
+	 * field
 	 * 
 	 * @return zoneNumber
 	 */

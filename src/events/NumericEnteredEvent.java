@@ -8,7 +8,7 @@ public class NumericEnteredEvent {
 	private int numeric;
 
 	/**
-	 * Contructor
+	 * Contructor takes an int called numeric and sets the numeric field
 	 * 
 	 * @param numeric
 	 */
@@ -17,7 +17,8 @@ public class NumericEnteredEvent {
 	}
 
 	/**
-	 * Getter method
+	 * Getter method that returns the numeric  or number that
+	 * was entered
 	 * 
 	 * @return numeric
 	 */

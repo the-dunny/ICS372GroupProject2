@@ -15,7 +15,9 @@ import events.ZoneUnreadyEvent;
 
 /**
  * The context is an observer for the clock and stores the context info for
- * states
+ * states.  It will hold values for the dipslay, current states, the state of the 
+ * zones, password fields (including what is entered and correct password).  This method
+ * adapts SecuritySystemDisplay and SecuritySystenStatem
  *
  */
 public class SecuritySystemContext {
@@ -29,7 +31,8 @@ public class SecuritySystemContext {
 	private String stringPassword = "";
 
 	/**
-	 * Make a singleton
+	 * Make a singleton.  The current instance variable will be this current instance.
+	 * The current state will be set to disarmed initially.
 	 */
 	private SecuritySystemContext() {
 		instance = this;
@@ -37,9 +40,11 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Return the instance
+	 * Checks to see if the 'instance' field is null.  If it is
+	 * null, it will call the constructor and instantiate the instance field.
+	 * If will then return the current instance. 
 	 * 
-	 * @return the object
+	 * @return an instance of SecuritySystemContext.
 	 */
 	public static SecuritySystemContext instance() {
 		if (instance == null) {
@@ -49,16 +54,20 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * The display could change. So we have to get its refrence.
+	 * The display could change. So we have to get its reference.  This method
+	 * will take an instance of type SecuritySystemDisplay and set the display
+	 * field.
 	 * 
-	 * @param display The current display object
+	 * @param takes an instance of type SecuritySystemDisplay
+	 * 
 	 */
 	public void setDisplay(SecuritySystemDisplay display) {
 		this.display = display;
 	}
 
 	/**
-	 * Lets the disarmed state be the starting state
+	 * The initialize method can be called to reset or set the current state
+	 * back to the default of Disarmed.  It will alse set all zones to false.
 	 */
 	public void initialize() {
 		instance.changeState(DisarmedState.instance());
@@ -68,7 +77,10 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Called from the states to change the current state
+	 * Called from the states to change the current state.  It will call the 
+	 * leave method of the current state, update current state to the next state,
+	 * and call the enter method of the new state
+	 * 
 	 * 
 	 * @param nextState the next state
 	 */
@@ -79,34 +91,38 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Handle the zone unready event
+	 * Handle the zone unready event.  It will call the current
+	 * states method to handle a ZoneUnreadyEvent.
 	 * 
-	 * @param event
+	 * @param event - a ZoneUnreadyEvent
 	 */
 	public void handleEvent(ZoneUnreadyEvent event) {
 		currentState.handleEvent(event);
 	}
 
 	/**
-	 * Handle cancel event
+	 * Handle cancel event, calls the handle method of the current state,
+	 * with a CancelEvent
 	 * 
-	 * @param event
+	 * @param event -- a CancelEvent object
 	 */
 	public void handleEvent(CancelEvent event) {
 		currentState.handleEvent(event);
 	}
 
 	/**
-	 * Handle the motion detected event
+	 * Handle a MotionDetectedEvent.  This method calls the handleEvent() 
+	 * method of the current state, and pass a MotionDetectedEvent
 	 * 
-	 * @param event
+	 * @param event -  a MotionDetectedEvent
 	 */
 	public void handleEvent(MotionDetectedEvent event) {
 		currentState.handleEvent(event);
 	}
 
 	/**
-	 * Handle the password entered event
+	 * HandleEvent method for a PasswordEnteredEvent.  This method calls the
+	 * currentStates handleEvent() method for a PasswordEnteredEvent
 	 * 
 	 * @param event
 	 */
@@ -115,7 +131,10 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Handle the numeric entered event
+	 * Handle the numeric entered event. This method will call the event
+	 * to get the number that was entered and add it to the passWordEntered array.
+	 * If the password size is 4, it will check the password, if correct it will call the 
+	 * PasswordEnteredEvent 
 	 * 
 	 * @param event
 	 */
@@ -133,7 +152,8 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Process the arming request
+	 * Process the arming request.  It will set the armingFrom, and
+	 * call teh current state to handle the event.
 	 * 
 	 * @param event
 	 */
@@ -143,7 +163,8 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Process the stay request
+	 * Process the stay request, it will call the current field wht 
+	 * the event value
 	 * 
 	 * @param event
 	 */
@@ -152,7 +173,10 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Handle the zone change event
+	 * Handle the zone change event.  This method will handle when
+	 * zone boolean values are changed.  It will update the current zone fields,
+	 * if not all of the zones are ready, it will call the ZoneUnreadyEvent method.
+	 * Then it will call the handleEvent method of the current state, with the updated values
 	 * 
 	 * @param event
 	 */
@@ -171,7 +195,8 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Supported method for handle zone change event
+	 * Supported method for handle zone change event, it will take the current boolean
+	 * value, and reverse it
 	 * 
 	 * @param valueToChange
 	 * @return boolean value
@@ -184,16 +209,18 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Supported method to check all zones's status
+	 * Supported method to check all zones's status.  It will check the value of
+	 * zone one, two and three.  If all zones are true(ready) it will return true;
 	 * 
-	 * @return
+	 * @return boolean, true if all zones are true.  False if any are false
 	 */
 	public boolean readyCheck() {
 		return zoneOneReady && zoneTwoReady && zoneThreeReady;
 	}
 
 	/**
-	 * Show the status of all zones
+	 * Show the status of all zones.  Method will call readyCheck() to see if all
+	 * zones are true(ready).  If not ready, calls showUnready(), else calls showReady()
 	 */
 	public void showZoneStatus() {
 		if (!readyCheck()) {
@@ -204,16 +231,18 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Supported method to indicate arming from stay or away mode
+	 * Supported method to indicate arming from stay or away mode, if will return
+	 * will return the armingFrom field
 	 * 
-	 * @return
+	 * @return int - arrmingFrom field.
 	 */
 	public int getArmingFrom() {
 		return armingFrom;
 	}
 
 	/**
-	 * Clean up the password after the user input password/pin
+	 * Clean up the password after the user input password/pin.  it will
+	 * clear the  current password array, and String
 	 */
 	public void clearPasswordEntered() {
 		passwordEntered.clear();
@@ -223,7 +252,8 @@ public class SecuritySystemContext {
 	/**
 	 * Check the password is correct or not
 	 * 
-	 * @return boolean
+	 * @return boolean - true if entered password is correct, false if 
+	 * incorrect
 	 */
 	public boolean passwordCheck() {
 		for (int index = 0; index < 4; index++) {
@@ -235,9 +265,9 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Get the entered password
+	 * Get the entered password, 
 	 * 
-	 * @return
+	 * @return String - the password entered by the user, stringPassword
 	 */
 	public String getPasswordEntered() {
 		return stringPassword;
@@ -262,7 +292,8 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Display the time remaining
+	 * Display the time remaining, it calls the showTimeLeft method of the adaptee display
+	 * field.
 	 * 
 	 * @param time
 	 * @param state
@@ -336,7 +367,8 @@ public class SecuritySystemContext {
 	}
 
 	/**
-	 * Show the password string
+	 * Show the password string, will show the String version of the password through
+	 * the showNumeric() method of display.
 	 * 
 	 */
 	public void showNumeric(String stringPassword) {

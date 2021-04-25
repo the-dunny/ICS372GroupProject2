@@ -1,14 +1,15 @@
 package events;
 
 /**
- * Represents the stay request
+ * Represents the stay request event
  *
  */
 public class StayRequestEvent extends SecuritySystemEvent {
 	private static StayRequestEvent instance;
 
 	/**
-	 * private for singleton
+	 * private for singleton, Constructor cannot be called
+	 * from outside of this class
 	 */
 
 	private StayRequestEvent() {
@@ -16,9 +17,11 @@ public class StayRequestEvent extends SecuritySystemEvent {
 	}
 
 	/**
-	 * For the singleton pattern
+	 * For the singleton pattern, this method will return a new instance
+	 * of StayRequestEvent if the instance field is null (hasn't been called yet)
+	 * or return the instance method if it has.
 	 * 
-	 * @Return the only instance
+	 * @Return the only instance of StayRequestEvent
 	 */
 
 	public static StayRequestEvent instance() {

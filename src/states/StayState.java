@@ -14,7 +14,8 @@ public class StayState extends SecuritySystemState {
 	private boolean cancelPressed;
 
 	/**
-	 * Private constructor for the singleton pattern
+	 * Private constructor for the singleton pattern, method
+	 * will set the instance method to this.
 	 */
 	private StayState() {
 		instance = this;
@@ -22,9 +23,11 @@ public class StayState extends SecuritySystemState {
 	}
 
 	/**
-	 * For the singleton pattern
+	 * For the singleton pattern, if the instance field is null,
+	 * it will create a new StayState and store it in the instance
+	 * field
 	 * 
-	 * @return the object
+	 * @return the StayState object from instance field
 	 */
 	public static StayState instance() {
 		if (instance == null) {
@@ -52,7 +55,9 @@ public class StayState extends SecuritySystemState {
 	}
 
 	/**
-	 * Handle numeric entered event
+	 * Handle numeric entered event, will call showNumeric method
+	 * of the SecuritSystemContext, and pass the String value of the password entered
+	 * that is obtained by the getPasswordEntered method of SecuritySystemContext
 	 */
 	@Override
 	public void handleEvent(NumericEnteredEvent event) {
@@ -60,7 +65,8 @@ public class StayState extends SecuritySystemState {
 	}
 
 	/**
-	 * Handle password entered event
+	 * Handle password entered event, if cancel is pressed and password is entered
+	 * correctly, the state is set to Disarmed.
 	 */
 	@Override
 	public void handleEvent(PasswordEnteredEvent event) {

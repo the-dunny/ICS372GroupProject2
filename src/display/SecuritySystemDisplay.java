@@ -7,7 +7,8 @@ package display;
  */
 public interface SecuritySystemDisplay {
 	/**
-	 * Displays the time remaining to go out of the house
+	 * Displays the time remaining to go out of the house that is kept track of 
+	 * by a TimeTracker instance.
 	 * 
 	 * @param time remaining time, state state it is going into after time runs out
 	 */

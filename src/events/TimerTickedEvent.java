@@ -10,7 +10,8 @@ public class TimerTickedEvent extends SecuritySystemEvent {
 	private int timeLeft;
 
 	/**
-	 * Stores the amount of time left in the Timer.
+	 * Stores the amount of time left in the Timer.  It stores the
+	 * passed value in the timeLeft field
 	 * 
 	 * @param value the amount of time left
 	 */
@@ -19,7 +20,8 @@ public class TimerTickedEvent extends SecuritySystemEvent {
 	}
 
 	/**
-	 * Needed for display purposes
+	 * Needed for display purposes, it will return the value
+	 * of timeLeft.
 	 */
 	public int getTimeLeft() {
 		return timeLeft;
