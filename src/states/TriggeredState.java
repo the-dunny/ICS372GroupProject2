@@ -74,16 +74,17 @@ public class TriggeredState extends SecuritySystemState implements Notifiable {
 	}
 
 	/**
-	 * Initializes state.  When this state is called a new timer is created with 15 seconds on
-	 * the clock, and adds itself as a Notifiable.  The SecuritySystemContext is set to triggered.
-	 * The Context will also immediately show the time left
+	 * Initializes state. When this state is called a new timer is created with 15
+	 * seconds on the clock, and adds itself as a Notifiable. The
+	 * SecuritySystemContext is set to triggered. The Context will also immediately
+	 * show the time left. Clears the password entered.
 	 */
 	@Override
 	public void enter() {
 		timer = new TimeTracker(15, this);
 		SecuritySystemContext.instance().showTriggered();
 		SecuritySystemContext.instance().showTimeLeft(timer.getRemainingTime(), "Breach");
-
+		SecuritySystemContext.instance().clearPasswordEntered();
 	}
 
 	/**
