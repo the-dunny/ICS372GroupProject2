@@ -15,16 +15,19 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 	private TimeTracker timer;
 
 	/**
-	 * Private for the singleton pattern
+	 * Private for the singleton pattern, this Constructor cannot
+	 * be called from outside of this class, but will be called from the 
+	 * instance method
 	 */
 	private ArmingState() {
 
 	}
 
 	/**
-	 * For singleton
+	 * For singleton, checks to see if current instance field is null. 
+	 * if it is it will instantiate it and return
 	 * 
-	 * @return the object
+	 * @return the ArmingState singleton object
 	 */
 	public static ArmingState instance() {
 		if (instance == null) {
@@ -34,7 +37,8 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 	}
 
 	/**
-	 * Process the timer ticked event
+	 * Process the timer ticked event, it will take a TimerTicketEvent,
+	 * , and set the Security System context to the updated time,
 	 */
 	@Override
 	public void handleEvent(TimerTickedEvent event) {
@@ -42,7 +46,10 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 	}
 
 	/**
-	 * Process the timer ran out event
+	 * Process the timer ran out event, will set the SecuritySystemContext 
+	 * to time 0 and "armed".  If the zones are ready, and arming from = 0, it will
+	 * change the state to Stay, if it is 1, it will change the state to away.  If the
+	 * zones are not ready it will change staye to Disarmed.
 	 */
 	@Override
 	public void handleEvent(TimerRanOutEvent event) {
@@ -59,7 +66,8 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 	}
 
 	/**
-	 * Initializes the state
+	 * Initializes the state, when a state is entered, a new time tracker is created with 10 second,
+	 * sets the timer to be to be observed by this ArmingState.
 	 * 
 	 */
 	@Override
@@ -69,7 +77,11 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 		SecuritySystemContext.instance().showTimeLeft(timer.getRemainingTime(), "Armed");
 
 	}
-
+	
+	/**
+	 * When the arming state is leaving, it will set the time to 0, and show
+	 * the state as Armed, and then show the away state.
+	 */
 	@Override
 	public void leave() {
 		timer = null;

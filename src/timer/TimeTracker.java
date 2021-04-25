@@ -70,6 +70,10 @@ public class TimeTracker implements PropertyChangeListener {
 		}
 	}
 
+	/*
+	 * This method will be used to remove the caller as a listener.
+	 * 
+	 */
 	public void stop() {
 		Timekeeper.instance().removePropertyChangeListener(this);
 

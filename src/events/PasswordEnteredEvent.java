@@ -8,7 +8,8 @@ public class PasswordEnteredEvent {
 	private static PasswordEnteredEvent instance;
 
 	/**
-	 * private for singleton
+	 * private for singleton, constructor cannot be called from
+	 * outside of this class
 	 */
 
 	private PasswordEnteredEvent() {
@@ -16,9 +17,10 @@ public class PasswordEnteredEvent {
 	}
 
 	/**
-	 * For the singleton pattern
+	 * For the singleton pattern, it no instance exists, then call constructor
+	 * to instantiate the instance, otherwise return the existing PasswordEnteredEvent
 	 * 
-	 * @Return the only instance
+	 * @Return the only instance pf PasswordEnteredEvent
 	 */
 
 	public static PasswordEnteredEvent instance() {

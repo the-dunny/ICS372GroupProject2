@@ -9,6 +9,7 @@ import states.SecuritySystemContext;
 
 /**
  * GUI to implement the SecuritySystemDisplay interface A pretty elementary
+ * interface extends Application of FX and implements the SecuritSystemDisplay
  * interface
  *
  */
@@ -16,13 +17,19 @@ public class GUIDisplay extends Application implements SecuritySystemDisplay {
 
 	public static SecuritySystemDisplay display;
 	DisplayController controller;
-
+	
+	/**
+	 * A get instance method that returns the SecuritySystemDisplay instance
+	 * variable
+	 * @return display -- the current 
+	 */
 	public static SecuritySystemDisplay getInstance() {
 		return display;
 	}
 
 	/**
-	 * Sets up the interface
+	 * Sets up the interface by setting the SecuritySystemContext display
+	 * to the current display.
 	 */
 	@Override
 	public void start(Stage stage) throws Exception {

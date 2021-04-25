@@ -9,7 +9,8 @@ public class TimerRanOutEvent extends SecuritySystemEvent {
 	private static TimerRanOutEvent instance;
 
 	/**
-	 * Private for singleton
+	 * Private for singleton, Constructor can not be called from outside of this
+	 * class
 	 * 
 	 */
 	private TimerRanOutEvent() {
@@ -17,7 +18,9 @@ public class TimerRanOutEvent extends SecuritySystemEvent {
 	}
 
 	/**
-	 * For the singleton pattern
+	 * For the singleton pattern, returns the instance field.  If the field
+	 * is null, it instantiates it by called the Constructor, and then returns
+	 * the instance field
 	 * 
 	 * @return the only instance
 	 */
