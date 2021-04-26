@@ -84,6 +84,7 @@ public class ArmingState extends SecuritySystemState implements Notifiable {
 	 */
 	@Override
 	public void leave() {
+		timer.stop();
 		timer = null;
 		SecuritySystemContext.instance().showTimeLeft(0, "Armed");
 		SecuritySystemContext.instance().showAway();

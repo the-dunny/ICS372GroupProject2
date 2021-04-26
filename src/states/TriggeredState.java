@@ -94,6 +94,7 @@ public class TriggeredState extends SecuritySystemState implements Notifiable {
 	 */
 	@Override
 	public void leave() {
+		timer.stop();
 		timer = null;
 		SecuritySystemContext.instance().showTimeLeft(0, "Breach");
 	}
